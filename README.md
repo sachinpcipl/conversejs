@@ -20,7 +20,7 @@ Please refer to the [generator-conversejs](https://github.com/conversejs/generat
 
 ### created plugin named "converse-hellotest"
 
-### Setup & installation
+A [converse.js](https://conversejs.org) plugin.
 
-Our created plugins are stored in ./src folder. So we have to be on src folder and run npm install for all its dependencies.
-Next step is to start the server using command: npm start
+To demo the plugin, go to the converse-hellotest plugin folder and first run `npm install` and then `npm start`.
+You can then open `http://localhost:8080` in your browser and the plugin will be loaded.
