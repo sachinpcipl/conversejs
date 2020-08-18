@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Converse.js Plugin Demo</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link
+      rel="shortcut icon"
+      type="image/ico"
+      href="https://cdn.conversejs.org/3.2.1/css/images/favicon.ico"
+    />
+    <![if gte IE 11]>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="https://cdn.conversejs.org/6.0.0/dist/converse.min.css"
+    />
+    <script
+      src="https://cdn.conversejs.org/6.0.0/dist/converse.min.js"
+      charset="utf-8"
+    ></script>
+    <script src="src/converse-hellotest.js"></script>
+    <![endif]>
+
+    <!-- A bit of custom CSS -->
+    <style>
+      body {
+        font-family: Helvetica, Arial, Sans-Serif;
+        color: #595959;
+        padding: 5%;
+      }
+      h1 {
+        text-align: center;
+      }
+      .converse-container {
+        height: 55vh;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>
+      ConverseJS - <strong>converse-hellotest</strong> plugin of
+      <a href="https://conversejs.org" target="_blank" rel="noopener"
+        >Converse.js</a
+      >.
+    </h1>
+
+    <p class="intro-text">Embedded MUC chat demo</p>
+    <div class="converse-container">
+      <div id="conversejs"></div>
+    </div>
+  </body>
+
+  <script>
+    converse.plugins.add("converse-hellotest", {
+      initialize: function () {
+        this._converse.on("messageSend", function (messageText) {
+          // alert("messagesend..");
+        });
+        const _converse = this._converse;
+
+        _converse.api.listen.on("messageAdded", (data) => {
+          alert(data.message.attributes.message);
+          //console.log(data);
+        });
+      },
+      overrides: {
+        ChatBoxView: {
+          renderMessage: function (attrs) {
+            alert("render message.");
+            return this.__super__.renderMessage.apply(this, arguments);
+          },
+        },
+      },
+    });
+
+    converse.initialize({
+      authentication: "anonymous",
+      auto_login: true,
+      auto_join_rooms: ["anonymous@conference.nomnom.im"],
+      jid: "nomnom.im",
+      bosh_service_url: "https://conversejs.org/http-bind/", // Please use this connection manager only for testing purposes
+      show_controlbox_by_default: true,
+      locales_url: "../locale/{{{locale}}}/LC_MESSAGES/converse.json",
+      singleton: true,
+      whitelisted_plugins: ["converse-hellotest"],
+      view_mode: "embedded",
+      notify_all_room_messages: ["anonymous@conference.nomnom.im"],
+      //play_sounds: true,
+      show_desktop_notifications: true,
+    });
+  </script>
+</html>
