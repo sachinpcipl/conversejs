@@ -8,7 +8,7 @@ You can either use it as a webchat app, or you can integrate it into your own we
 
 In embedded mode, Converse can be embedded into an element in the DOM.
 
-###NOTE
+### NOTE
 
 Generating a plugin with Yeoman
 
