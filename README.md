@@ -17,3 +17,10 @@ The rest of this document explains how to write a plugin for Converse and ends w
 There is a Yeoman code generator, called generator-conversejs, which you can use to generate plugin scaffolding/boilerplate that serves as a starting point and basis for writing your plugin.
 
 Please refer to the [generator-conversejs](https://github.com/conversejs/generator-conversejs) README for information on how to use it.
+
+### created plugin named "converse-hellotest"
+
+### Setup & installation
+
+Our created plugins are stored in ./src folder. So we have to be on src folder and run npm install for all its dependencies.
+Next step is to start the server using command: npm start
